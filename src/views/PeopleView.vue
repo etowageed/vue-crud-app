@@ -1,49 +1,54 @@
 <template>
-    <div class="h-5">
-        <h1>Our People</h1>
-    </div>
-    <div class="database-card w-2/3 mx-auto">
-        <RouterLink to="/people/create" class="px-5 py-3 bg-green-600 text-slate-800 rounded-full font-medium inline-block">
-            Add person
-        </RouterLink>
-        <div class="data-tables">
-            <table class="border border-red-600 w-full">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>OCCUPATION</th>
-                        <th>MUSIC GENRE</th>
-                        <th>EMAIL</th>
-                        <th>PHONE</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="person in this.people">
-                        <td>{{ person.id }}</td>
-                        <td>{{ person.name }}</td>
-                        <td>{{ person.occupation }}</td>
-                        <td>{{ person.music_genre }}</td>
-                        <td>{{ person.email }}</td>
-                        <td>{{ person.phone }}</td>
-                        <td class="space-x-3">
-                            <!-- this will serve as edit (patch) button -->
-                            <RouterLink :to="{ path: '/people/' + person.id + '/edit' }"
-                                class="p-2 bg-amber-200 text-slate-800 rounded-full font-medium inline-block">
-                                Edit
-                            </RouterLink>
-                            <button type="button" @click="deletePerson(person.id)"
-                                class="p-2 bg-red-200 text-slate-800 rounded-full font-medium inline-block">
-                                Del
-                            </button>
-                        </td>
+    <div id="container" class="px-14">
+        <div class="my-10">
+            <h1 class="text-5xl">Our Community</h1>
+        </div>
+        <div class="database-card w-2/3 mx-auto mt-12">
+            <div class="data-tables">
+                <button role="button"
+                    class="px-5 py-3 bg-green-600 text-slate-800 rounded-full font-medium inline-block mb-10 float-right">
+                    <RouterLink to="/people/create">
+                        Add person
+                    </RouterLink>
+                </button>
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr>
+                            <th class="border border-slate-900">ID</th>
+                            <th class="border border-slate-900">NAME</th>
+                            <th class="border border-slate-900">OCCUPATION</th>
+                            <th class="border border-slate-900">MUSIC GENRE</th>
+                            <th class="border border-slate-900">EMAIL</th>
+                            <th class="border border-slate-900">PHONE</th>
+                            <th class="border border-slate-900">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="person in this.people" class="border border-slate-900">
+                            <td>{{ person.id }}</td>
+                            <td>{{ person.name }}</td>
+                            <td>{{ person.occupation }}</td>
+                            <td>{{ person.music_genre }}</td>
+                            <td>{{ person.email }}</td>
+                            <td>{{ person.phone }}</td>
+                            <td class="space-x-3">
+                                <!-- this will serve as edit (patch) button -->
+                                <RouterLink :to="{ path: '/people/' + person.id + '/edit' }"
+                                    class="p-2 bg-amber-200 text-slate-800 rounded-full font-medium inline-block">
+                                    Edit
+                                </RouterLink>
+                                <button type="button" @click="deletePerson(person.id)"
+                                    class="p-2 bg-red-200 text-slate-800 rounded-full font-medium inline-block">
+                                    Del
+                                </button>
+                            </td>
 
-                    </tr>
-                </tbody>
+                        </tr>
+                    </tbody>
 
-            </table>
+                </table>
 
+            </div>
         </div>
     </div>
 </template>
